@@ -30,5 +30,17 @@ const callbackFunc=(accumulator,currentValue)=>{
 const total=numbers.reduce(callbackFunc)
 console.log('total',total);
 
+//total of an object arrays
+const objArray=[{x:3},{a:6},{b:9},{c:3},]
+const totalObjArr=objArray.reduce((accumulator,currentValue)=>{
+   let total=0
+    for(let x in currentValue){
+        total=currentValue[x]+accumulator
+    }
+    return total
+},initialValue)
+console.log('obj array',totalObjArr);
+
+
 
 
