@@ -4,4 +4,6 @@ ei method diye array er sokol complex kaj kora zay
 reduce() method duita parametre recieve kore, 1. callback function, 2. default value
 */ 
 newArr=[1,2,3,4,5,6,7,8]
-const sum=newArr.reduce(()=>{},0)
+const sum=newArr.reduce((prevValue0,currentValue, currentItemIndex,mainArray)=>{
+    return prevValue0+currentValue
+},0)
