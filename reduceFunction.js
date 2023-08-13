@@ -14,3 +14,13 @@ const sum=newArr.reduce((prevValue,currentValue, currentItemIndex,mainArray)=>{
     return prevValue+currentValue
 },0)
 console.log(sum);
+
+//get max by reduce and make callback for getmax value
+//callback for get max value
+const getMax=(a,b)=>Math.max(a,b)
+const numbers=[33,77,456,44,777,567,986,33,22,]
+const initialValue=0
+const max=numbers.reduce(getMax,initialValue)
+console.log(max);
+
+
