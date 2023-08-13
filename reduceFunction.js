@@ -18,9 +18,17 @@ console.log(sum);
 //get max by reduce and make callback for getmax value
 //callback for get max value
 const getMax=(a,b)=>Math.max(a,b)
-const numbers=[33,77,456,44,777,567,986,33,22,]
+const numbers=[30,40,50,60,]
 const initialValue=0
 const max=numbers.reduce(getMax,initialValue)
 console.log(max);
+
+const callbackFunc=(accumulator,currentValue)=>{
+    const total=accumulator+currentValue
+    return total
+}
+const total=numbers.reduce(callbackFunc)
+console.log('total',total);
+
 
 
