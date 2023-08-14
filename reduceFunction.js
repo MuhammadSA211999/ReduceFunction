@@ -41,13 +41,18 @@ const totalObjArr=objArray.reduce((accumulator,currentValue)=>{
 },initialValue)
 console.log('obj array',totalObjArr);
 
-const names = ["Alice", "Bob", "Tiff", "Bruce", "Alice"];
-const countedNames = Object.create(null);
-for (const name of names) {
-  const currCount = countedNames[name] ?? 0;
-  countedNames[name] = currCount + 1;
+
+const countDuplicate=(names)=>{
+    const countedNames = {}
+    for (const name of names) {
+      const currCount = countedNames[name] ?? 0;
+      countedNames[name] = currCount + 1;
+    }
+    return countedNames
 }
-console.log(countedNames);
+const names = ["Alice", "Bob", "Tiff", "Bruce", "Alice"];
+const countedObj=countDuplicate(names)
+
 
 
 
