@@ -62,7 +62,21 @@ const arrayLike = {
     3: 99,
     length: 2,
 };
-console.log('in array like', Array.prototype.reduce.call(arrayLike, (x, y) => x + y));
+// console.log('in array like', Array.prototype.reduce.call(arrayLike, (x, y) => x + y));
+
+const friends = [
+    { name: "Anna", books: ["Bible", "Harry Potter"] },
+    { name: "Bob", books: ["War and peace", "Romeo and Juliet"] },
+    { name: "Alice", books: ["The Lord of the Rings", "The Shining"] },
+];
+const groups = friends.reduce((acc, obj) => {
+    const key = obj.name;
+    const curGroup = acc[key] ?? [];
+    return { ...acc, [key]: [...curGroup, obj] };
+}, {});
+
+// const groups = Object.groupBy(friends, () => obj.name);
+console.log(groups);
 
 
 
