@@ -54,6 +54,16 @@ const names = ["Alice", "Bob", "Tiff", "Bruce", "Alice"];
 const countedObj = countDuplicate(names)
 console.log(countedObj);
 
+const arrayLike = {
+    // length: 2,
+    0: 2,
+    1: 3,  // array length 2 here
+    2: 4,
+    3: 99, // ignored by reduce() since length is 3
+    length: 2,
+};
+console.log('in array like', Array.prototype.reduce.call(arrayLike, (x, y) => x + y));
+
 
 
 
