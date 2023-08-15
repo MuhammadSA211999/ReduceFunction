@@ -87,17 +87,21 @@ const roots = newArr.flatMap((val) => {
 // console.log(roots);
 
 //reduce recieves a array of functions and return a new function
-const pipe = (...functions) => (initialValue) => functions.reduce((acc, currFunc) => {
-    console.log('acc', acc);
-    console.log('d or t', currFunc);
-    console.log('value', currFunc(acc));
-    return currFunc(acc)
-}, initialValue)
+// const pipe = (...functions) => (initialValue) => functions.reduce((acc, currFunc) => {
+//     console.log('acc', acc);
+//     console.log('d or t', currFunc);
+//     console.log('value', currFunc(acc));
+//     return currFunc(acc)
+// }, initialValue)
 
-const double = x => x * 2
-const triple = x => x * 3
-const quadrple = x => x * 4
+// const double = x => x * 2
+// const triple = x => x * 3
+// const quadrple = x => x * 4
 
-const multiple2 = pipe(double)
-const duobleValue = multiple2(8)
-console.log('final', duobleValue);
+// const multiple2 = pipe(double)
+// const duobleValue = multiple2(8)
+// console.log('final', duobleValue);
+
+//asyncronous sequence of piping
+const pipe = (...functions) => (initialValue) => functions.reduce(async (acc, fn) => fn(await acc), initialValue)
+//kuno ekti function er age asynchronous likhi, and asyncronous function er result pawar jonno await korte hobe
