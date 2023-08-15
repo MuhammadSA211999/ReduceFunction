@@ -102,6 +102,14 @@ const roots = newArr.flatMap((val) => {
 // const duobleValue = multiple2(8)
 // console.log('final', duobleValue);
 
-//asyncronous sequence of piping
-const pipe = (...functions) => (initialValue) => functions.reduce(async (acc, fn) => fn(await acc), initialValue)
+//asyncronous handle sequence of piping
+const pipe = (...functions) => async (initialValue) => functions.reduce(async (acc, fn) => await fn(acc), initialValue)
 //kuno ekti function er age asynchronous likhi, and asyncronous function er result pawar jonno await korte hobe
+
+const double = x => x * 2
+const triple = x => x * 3
+const quadrple = x => x * 4
+
+const pipeReturnFunc = pipe(double, triple)
+const finalValue = pipeReturnFunc(2)
+console.log(finalValue);
