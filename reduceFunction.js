@@ -13,7 +13,7 @@ newArr = [1, 2, 3, 4, 5, 6, 7, 8]
 const sum = newArr.reduce((prevValue, currentValue, currentItemIndex, mainArray) => {
     return prevValue + currentValue
 }, 0)
-console.log(sum);
+// console.log(sum);
 
 //get max by reduce and make callback for getmax value
 //callback for get max value
@@ -21,14 +21,14 @@ const getMax = (a, b) => Math.max(a, b)
 const numbers = [30, 40, 50, 60,]
 const initialValue = 0
 const max = numbers.reduce(getMax, initialValue)
-console.log(max);
+// console.log(max);
 
 const callbackFunc = (accumulator, currentValue) => {
     const total = accumulator + currentValue
     return total
 }
 const total = numbers.reduce(callbackFunc)
-console.log('total', total);
+// console.log('total', total);
 
 //total of an object arrays
 const objArray = [{ x: 3 }, { a: 6 }, { b: 9 }, { c: 3 },]
@@ -39,7 +39,7 @@ const totalObjArr = objArray.reduce((accumulator, currentValue) => {
     }
     return total
 }, initialValue)
-console.log('obj array', totalObjArr);
+// console.log('obj array', totalObjArr);
 
 
 const countDuplicate = (names) => {
@@ -52,7 +52,7 @@ const countDuplicate = (names) => {
 }
 const names = ["Alice", "Bob", "Tiff", "Bruce", "Alice"];
 const countedObj = countDuplicate(names)
-console.log(countedObj);
+// console.log(countedObj);
 
 const arrayLike = {
     // length: 2,
@@ -74,13 +74,29 @@ const groups = friends.reduce((acc, obj) => {
     const curGroup = acc[key] ?? [];
     return { ...acc, [key]: [...curGroup, obj] };
 }, {});
-
+// console.log(groups);
 // const groups = Object.groupBy(friends, () => obj.name);
-console.log(groups);
 
 
+const roots = newArr.flatMap((val) => {
+    if (val < 0) return [];
+    const root = Math.sqrt(val);
+    if (Number.isInteger(root)) return [root, root];
+    return [val];
+});
+// console.log(roots);
 
+//reduce recieves a array of functions and return a new function
+const pipe = (...functions) => (initialValue) => functions.reduce((acc, currFunc) => {
+    console.log('acc', acc);
+    console.log('d or t', currFunc);
+    console.log('value', currFunc(acc));
+    return currFunc(acc)
+}, initialValue)
 
-
-
-
+const double = x => x * 2
+const triple = x => x * 3
+const quadrple = x => x * 4
+const multiple2 = pipe(double, triple)
+const duobleValue = multiple2(8)
+console.log('final', duobleValue);
