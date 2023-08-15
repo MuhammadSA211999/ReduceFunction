@@ -97,6 +97,7 @@ const pipe = (...functions) => (initialValue) => functions.reduce((acc, currFunc
 const double = x => x * 2
 const triple = x => x * 3
 const quadrple = x => x * 4
-const multiple2 = pipe(double, triple)
+
+const multiple2 = pipe(double)
 const duobleValue = multiple2(8)
 console.log('final', duobleValue);
